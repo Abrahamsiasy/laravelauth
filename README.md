@@ -62,3 +62,41 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
++--------+-----------+------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+
+| Domain | Method    | URI                    | Name             | Action                                                                 | Middleware                                  |
++--------+-----------+------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+
+|        | GET|HEAD  | /                      |                  | Closure                                                                | web                                         |
+|        | GET|HEAD  | api/user               |                  | Closure                                                                | api                                         |
+|        |           |                        |                  |                                                                        | App\Http\Middleware\Authenticate:sanctum    |
+|        | GET|HEAD  | home                   | home             | App\Http\Controllers\HomeController@index                              | web                                         |
+|        |           |                        |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        | GET|HEAD  | login                  | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | web                                         |
+|        |           |                        |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
+|        | POST      | login                  |                  | App\Http\Controllers\Auth\LoginController@login                        | web                                         |
+|        |           |                        |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
+|        | POST      | logout                 | logout           | App\Http\Controllers\Auth\LoginController@logout                       | web                                         |
+|        | POST      | password/confirm       |                  | App\Http\Controllers\Auth\ConfirmPasswordController@confirm            | web                                         |
+|        |           |                        |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        | GET|HEAD  | password/confirm       | password.confirm | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm    | web                                         |
+|        |           |                        |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        | POST      | password/email         | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web                                         |
+|        | POST      | password/reset         | password.update  | App\Http\Controllers\Auth\ResetPasswordController@reset                | web                                         |
+|        | GET|HEAD  | password/reset         | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web                                         |
+|        | GET|HEAD  | password/reset/{token} | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web                                         |
+|        | POST      | posts                  | posts.store      | App\Http\Controllers\PostsController@store                             | web                                         |
+|        | GET|HEAD  | posts                  | posts.index      | App\Http\Controllers\PostsController@index                             | web                                         |
+|        | GET|HEAD  | posts/create           | posts.create     | App\Http\Controllers\PostsController@create                            | web                                         |
+|        | GET|HEAD  | posts/{post}           | posts.show       | App\Http\Controllers\PostsController@show                              | web                                         |
+|        | PUT|PATCH | posts/{post}           | posts.update     | App\Http\Controllers\PostsController@update                            | web                                         |
+|        | DELETE    | posts/{post}           | posts.destroy    | App\Http\Controllers\PostsController@destroy                           | web                                         |
+|        | GET|HEAD  | posts/{post}/edit      | posts.edit       | App\Http\Controllers\PostsController@edit                              | web                                         |
+|        | POST      | register               |                  | App\Http\Controllers\Auth\RegisterController@register                  | web                                         |
+|        |           |                        |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
+|        | GET|HEAD  | register               | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web                                         |
+|        |           |                        |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
+|        | GET|HEAD  | sanctum/csrf-cookie    |                  | Laravel\Sanctum\Http\Controllers\CsrfCookieController@show             | web                                         |
++--------+-----------+------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+
+arkham@Arkham-HP-ProBook-6570b:~/Desktop/Project/PHP/auth8$ 
+
